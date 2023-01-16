@@ -1,0 +1,77 @@
+@bg-color: #b7d4a8;
+
+// 清除默认样式
+* {
+  margin: 0;
+  padding: 0;
+  // 改变盒子模型的计算方式
+  box-sizing: border-box;
+}
+
+body {
+  font: bold 20px "Courier";
+}
+
+// 游戏主窗口
+#main {
+  width: 360px;
+  height: 420px;
+  background-color: @bg-color;
+  margin: 100px auto; // 设置居中
+  border: 10px solid black;
+  border-radius: 20px; // 设置圆角
+
+  display: flex; // 开启弹性盒子模型
+  flex-flow: column; // 设置主轴方向
+  justify-content: space-around; // 设置主轴对齐方式
+  align-items: center; // 设置侧轴对齐方式
+
+  // 游戏舞台
+  #stage {
+    width: 304px;
+    height: 304px;
+    border: 2px solid black;
+    position: relative; // 蛇的定位需要参照游戏舞台，因为蛇是绝对定位，所以游戏舞台使用相对定位
+
+    // 蛇的容器
+    #snake {
+      // 蛇的各部分
+      & > div {
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        border: 1px solid @bg-color;
+        position: absolute; // 因为蛇需要移动，也就是蛇的位置需要改动，所以需要开始绝对定位
+      }
+    }
+
+    // 食物
+    #food {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      left: 40px;
+      top: 100px;
+      display: flex;
+      flex-flow: row wrap; // 主轴为横轴，wrap表示会自动换行（横向排列，当一行放不下时换行）
+
+      // 设置主轴和侧轴的空白空间分配到元素之间
+      justify-content: space-between;
+      align-content: space-between;
+
+      & > div {
+        width: 4px;
+        height: 4px;
+        background-color: black;
+        transform: rotate(45deg); // 使4个div旋转45度
+      }
+    }
+  }
+
+  // 游戏记分牌
+  #score-panel {
+    width: 300px;
+    display: flex;
+    justify-content: space-between; // 设置主轴对齐方式
+  }
+}
