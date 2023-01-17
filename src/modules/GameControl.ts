@@ -76,6 +76,16 @@ export default class GameControl {
         break;
     }
 
+    // 检测蛇是否吃到了食物
+    if (this.checkEat(x, y)) {
+      // 重置食物的位置
+      this.food.change();
+      // 增加分数
+      this.scorePanel.addScore();
+      // 给蛇的身体增加一节
+      this.snake.addBody();
+    }
+
     try {
       this.snake.X = x;
       this.snake.Y = y;
@@ -89,5 +99,10 @@ export default class GameControl {
     let speed = 300 - (this.scorePanel.Level - 1) * 30;
     // 定时调用，将蛇自己移动
     this.isLive && setTimeout(this.run.bind(this), speed);
+  }
+
+  /** 检测蛇是否吃到了食物 */
+  private checkEat(x: number, y: number) {
+    return x === this.food.X && y === this.food.Y;
   }
 }
