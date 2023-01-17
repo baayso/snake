@@ -2,7 +2,7 @@
  * 食物
  */
 export default class Food {
-  // 食物所对应的元素
+  /** 食物所对应的元素 */
   element: HTMLElement;
 
   constructor() {
@@ -11,14 +11,14 @@ export default class Food {
   }
 
   /**
-   * 获取食物水平轴（X轴）
+   * 获取食物水平轴（X轴）坐标
    */
   get X() {
     return this.element.offsetLeft;
   }
 
   /**
-   * 获取食物垂直轴（Y轴）
+   * 获取食物垂直轴（Y轴）坐标
    */
   get Y() {
     return this.element.offsetTop;
