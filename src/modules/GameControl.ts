@@ -76,8 +76,14 @@ export default class GameControl {
         break;
     }
 
-    this.snake.X = x;
-    this.snake.Y = y;
+    try {
+      this.snake.X = x;
+      this.snake.Y = y;
+    } catch (error: any) {
+      // 游戏结束
+      this.isLive = false;
+      alert(`${(<Error>error).message}, GAME OVER!`);
+    }
 
     // 根据等级计算蛇的移动速度
     let speed = 300 - (this.scorePanel.Level - 1) * 30;
