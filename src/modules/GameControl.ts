@@ -1,6 +1,7 @@
 import Snake from "./Snake";
 import Food from "./Food";
 import ScorePanel from "./ScorePanel";
+import { Direction, DirectionIE } from "./enum/Direction";
 
 /**
  * 游戏控制器
@@ -14,7 +15,7 @@ export default class GameControl {
   private scorePanel: ScorePanel;
 
   /** 蛇的移动方向，即按键方向 */
-  private direction: string = "Right";
+  private direction: string = Direction[Direction.ArrowRight];
   /** 游戏是否结束 */
   private isLive = true;
 
@@ -34,8 +35,11 @@ export default class GameControl {
 
   /** 键盘按下的响应函数 */
   private keydownHandler(event: KeyboardEvent) {
-    // 检查event.key的值是否合法，也就是用户是否按了正确的按钮（键盘的方向键）
-    this.direction = event.key;
+    // 检查event.key的值是否合法，也就是用户是否按了正确的按键（键盘的方向键）
+    const key = event.key;
+    if (key in Direction || key in DirectionIE) {
+      this.direction = key;
+    }
   }
 
   /** 控制蛇的移动 */
@@ -52,27 +56,25 @@ export default class GameControl {
      * 向右移动  left 增加
      */
     switch (this.direction) {
-      case "ArrowUp":
-      case "Up":
+      case Direction[Direction.ArrowUp]:
+      case DirectionIE[DirectionIE.Up]:
         // 向上移动  top  减少
         y -= 10;
         break;
-      case "ArrowDown":
-      case "Down":
+      case Direction[Direction.ArrowDown]:
+      case DirectionIE[DirectionIE.Down]:
         // 向下移动  top  增加
         y += 10;
         break;
-      case "ArrowLeft":
-      case "Left":
+      case Direction[Direction.ArrowLeft]:
+      case DirectionIE[DirectionIE.Left]:
         // 向左移动  left 减少
         x -= 10;
         break;
-      case "ArrowRight":
-      case "Right":
+      case Direction[Direction.ArrowRight]:
+      case DirectionIE[DirectionIE.Right]:
         // 向右移动  left 增加
         x += 10;
-        break;
-      default:
         break;
     }
 
