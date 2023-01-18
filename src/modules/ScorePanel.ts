@@ -3,9 +3,9 @@
  */
 export default class ScorePanel {
   /** 默认最大等级 */
-  private static DEFAULT_MAX_LEVEL: number = 10;
+  private static readonly DEFAULT_MAX_LEVEL: number = 10;
   /** 默认升级所需要的分数 */
-  private static DEFAULT_LEVEL_UP_SCORE: number = 10;
+  private static readonly DEFAULT_LEVEL_UP_SCORE: number = 10;
 
   /** 分数 */
   private score = 0;
@@ -18,9 +18,9 @@ export default class ScorePanel {
   private levelUpScore: number;
 
   /** 分数元素 */
-  scoreElement: HTMLElement;
+  private scoreElement: HTMLElement;
   /** 等级元素 */
-  levelElement: HTMLElement;
+  private levelElement: HTMLElement;
 
   constructor(
     maxLevel: number = ScorePanel.DEFAULT_MAX_LEVEL,

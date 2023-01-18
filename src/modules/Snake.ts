@@ -3,11 +3,11 @@
  */
 export default class Snake {
   /** 蛇的容器 */
-  element: HTMLElement;
+  private element: HTMLElement;
   /** 表示蛇头的元素 */
-  head: HTMLElement;
+  private head: HTMLElement;
   /** 蛇的身体（包括蛇头） */
-  bodies: HTMLCollectionOf<HTMLElement>;
+  private bodies: HTMLCollectionOf<HTMLElement>;
 
   constructor() {
     this.element = document.getElementById("snake")!;

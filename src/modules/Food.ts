@@ -3,7 +3,7 @@
  */
 export default class Food {
   /** 食物所对应的元素 */
-  element: HTMLElement;
+  private element: HTMLElement;
 
   constructor() {
     // 获取页面中的food元素
